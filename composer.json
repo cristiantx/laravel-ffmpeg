@@ -1,11 +1,11 @@
 {
-    "name": "pbmedia/laravel-ffmpeg",
+    "name": "cristiantx/laravel-ffmpeg",
     "description": "FFMpeg for Laravel 5.1 and higher",
     "keywords": [
-        "pbmedia",
+        "cristiantx",
         "laravel-ffmpeg"
     ],
-    "homepage": "https://github.com/pbmedia/laravel-ffmpeg",
+    "homepage": "https://github.com/cristiantx/laravel-ffmpeg",
     "license": "MIT",
     "authors": [
         {
