@@ -21,36 +21,36 @@ class Media
         $this->media = $media;
     }
 
-    public function isFrame(): bool
+    public function isFrame()
     {
         return $this->media instanceof Frame;
     }
 
-    public function getFile(): File
+    public function getFile()
     {
         return $this->file;
     }
 
-    public function export(): MediaExporter
+    public function export()
     {
         return new MediaExporter($this);
     }
 
-    public function getFrameFromString(string $timecode): Media
+    public function getFrameFromString(string $timecode)
     {
         return $this->getFrameFromTimecode(
             TimeCode::fromString($timecode)
         );
     }
 
-    public function getFrameFromSeconds(float $quantity): Media
+    public function getFrameFromSeconds(float $quantity)
     {
         return $this->getFrameFromTimecode(
             TimeCode::fromSeconds($quantity)
         );
     }
 
-    public function getFrameFromTimecode(TimeCode $timecode): Media
+    public function getFrameFromTimecode(TimeCode $timecode)
     {
         $frame = $this->media->frame($timecode);
 
