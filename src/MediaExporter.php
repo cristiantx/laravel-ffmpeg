@@ -20,12 +20,12 @@ class MediaExporter
         $this->disk  = $media->getFile()->getDisk();
     }
 
-    protected function getFormat(): FormatInterface
+    protected function getFormat()
     {
         return $this->format;
     }
 
-    public function inFormat(FormatInterface $format): MediaExporter
+    public function inFormat(FormatInterface $format)
     {
         $this->format = $format;
 
@@ -37,7 +37,7 @@ class MediaExporter
         return $this->disk;
     }
 
-    public function toDisk($diskOrName): MediaExporter
+    public function toDisk($diskOrName)
     {
         if ($diskOrName instanceof Disk) {
             $this->disk = $diskOrName;
@@ -55,19 +55,19 @@ class MediaExporter
         return $this;
     }
 
-    public function unaccurate(): MediaExporter
+    public function unaccurate()
     {
         $this->frameMustBeAccurate = false;
 
         return $this;
     }
 
-    public function getAccuracy(): bool
+    public function getAccuracy()
     {
         return $this->frameMustBeAccurate;
     }
 
-    public function save(string $path): Media
+    public function save(string $path)
     {
         $file = $this->getDisk()->newFile($path);
 
@@ -84,12 +84,12 @@ class MediaExporter
         return $this->media;
     }
 
-    protected function moveSavedFileToRemoteDisk($localSourcePath, File $fileOnRemoteDisk): bool
+    protected function moveSavedFileToRemoteDisk($localSourcePath, File $fileOnRemoteDisk)
     {
         return $fileOnRemoteDisk->put($localSourcePath) && unlink($localSourcePath);
     }
 
-    private function getDestinationPathForSaving(File $file): string
+    private function getDestinationPathForSaving(File $file)
     {
         if (!$file->getDisk()->isLocal()) {
             $tempName = tempnam(sys_get_temp_dir(), 'laravel-ffmpeg');
@@ -100,14 +100,14 @@ class MediaExporter
         return $file->getFullPath();
     }
 
-    private function saveFrame(string $fullPath): MediaExporter
+    private function saveFrame(string $fullPath)
     {
         $this->media->save($fullPath, $this->getAccuracy());
 
         return $this;
     }
 
-    private function saveAudioOrVideo(string $fullPath): MediaExporter
+    private function saveAudioOrVideo(string $fullPath)
     {
         $this->media->save($this->getFormat(), $fullPath);
 
